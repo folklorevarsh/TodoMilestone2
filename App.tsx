@@ -15,11 +15,13 @@ import AddTodoScreen from './components/addTodoScreen'
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [todos, setTodos] = useState([
-    { text: 'Adopt a cat!', key: '1' },
-    { text: 'create an app', key: '2' },
-    { text: 'play on the switch', key: '3' },
-  ]);
+    const [todos, setTodos] = useState([
+      { text: 'Adopt a cat!', key: '1' },
+      { text: 'Finish Javascript Assignment', key: '2' },
+      { text: 'Buy groceries on the way home', key: '3' },
+    ]);
+
+
 
   return (
     <NavigationContainer>

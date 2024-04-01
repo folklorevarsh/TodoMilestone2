@@ -15,7 +15,7 @@ export default function AddTodoScreen({ navigation, setTodos }) {
       setText('');
       navigation.goBack();
     } else {
-      Alert.alert('OOPS', 'Todo must be over 3 characters long', [
+      Alert.alert('A little hiccup!', 'Your ToDo must be over 5 characters long. Please try again', [
         {text: 'Understood', onPress: () => console.log('alert closed') }
       ]);
     }
@@ -27,9 +27,9 @@ export default function AddTodoScreen({ navigation, setTodos }) {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.title, {textAlign: 'center', marginTop: 20, color: 'black' }]}>Add Todo</Text>
+      
       <TextInput
-        style={[styles.input, { width: '100%', marginBottom: 16 }]}
+        style={[styles.input, { width: '100%', marginBottom: 16, color:'#E572BA' }]}
         placeholder='Enter your To Do!'
         onChangeText={setText}
         value={text}
@@ -42,13 +42,7 @@ export default function AddTodoScreen({ navigation, setTodos }) {
         multiline={true}
         numberOfLines={4}
       />
-
-      <TouchableOpacity style={styles.button} onPress={goBackToHome}>
-        <Icon name="cancel" size={24} color="white" />
-        <Text style={styles.buttonText}>Cancel</Text>
-      </TouchableOpacity>
-
-      <Button onPress={addTodo} title='Add To Do' color='pink' />
+      <Button onPress={addTodo} title='Add To Do' color='#E572BA' />
       <View style={{ marginBottom: 8 }}></View>
       <Button onPress={goBackToHome} title='Cancel' color='red' style={{ height: 30, width: 40 }} />
       <View style={{ marginBottom: 8 }}></View>

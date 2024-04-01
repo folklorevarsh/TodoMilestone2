@@ -8,9 +8,19 @@ import TodoItem from '../components/todoItem';
 export default function HomeScreen({ navigation }) {
   const [todos, setTodos] = useState([
     { text: 'Adopt a cat!', key: '1' },
-    { text: 'create an app', key: '2' },
-    { text: 'play on the switch', key: '3' },
+    { text: 'Finish Javascript Assignment', key: '2' },
+    { text: 'Buy groceries on the way home', key: '3' },
   ]);
+
+  const boldText = {
+    fontWeight: 'bold',
+    textAlign: 'center',
+  };
+
+  const boldBox = {
+    borderWidth: 5,
+    borderColor: '#B6428A',
+  };
 
   const pressHandler = (key) => {
     setTodos(prevTodos => {
@@ -60,19 +70,33 @@ export default function HomeScreen({ navigation }) {
 }
 */
 const styles = StyleSheet.create({
-  list: {
-    marginTop: 25,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#F7C3E4', // change the background color to a dark color
-    borderWidth: 5, // add a border
-    borderColor: '#B6428A', // set the border color
-  },
-  content: {
-    padding: 50,
-  },
-});
+    list: {
+      marginTop: 25,
+    },
+
+    input: {
+      marginBottom: 15,
+      paddingHorizontal: 6,
+      paddingVertical: 6,
+      borderBottomWidth: 3,
+      borderBottomColor: '#E572BA',
+      },
+
+    container: {
+      flex: 1,
+      backgroundColor: '#F7C3E4',
+      borderWidth: 5,
+      borderColor: '#B6428A',
+    },
+    content: {
+      padding: 50,
+    },
+    text: {
+      color: 'black', // add this line to make the text black
+    },
+    
+  });
+
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -89,8 +113,9 @@ const styles = StyleSheet.create({
           </View>
           <View style={{ marginTop: 20 }}>
             <Button 
-              title="Add Todo" 
+              title="Add To Do" 
               onPress={() => navigation.navigate('AddTodo', { setTodos })} 
+              color='#E572BA'
             />
           </View>
         </View>
