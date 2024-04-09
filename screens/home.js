@@ -7,9 +7,7 @@ import TodoItem from '../components/todoItem';
 
 export default function HomeScreen({ navigation }) {
   const [todos, setTodos] = useState([
-    { text: 'Adopt a cat!', key: '1' },
-    { text: 'Finish Javascript Assignment', key: '2' },
-    { text: 'Buy groceries on the way home', key: '3' },
+    
   ]);
 
   const boldText = {
@@ -116,6 +114,7 @@ const styles = StyleSheet.create({
               title="Add To Do" 
               onPress={() => navigation.navigate('AddTodo', { setTodos })} 
               color='#E572BA'
+              style={{ height: 50, width: 200 }} // Add this style to make the button bigger
             />
           </View>
         </View>
