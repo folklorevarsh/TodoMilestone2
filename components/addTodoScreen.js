@@ -114,11 +114,8 @@ export default function AddTodoScreen(navigation) {
     }
     setTodoTitle('');
     setTodoDescription('');
-    navigation.goBack();
 
-    const goBackToHome = () => {
-      navigation.goBack();
-    };
+    
   };
 
   const deleteTodo = (todoId) => {
@@ -140,18 +137,19 @@ export default function AddTodoScreen(navigation) {
         style={styles.input}
         value={todoTitle}
         onChangeText={setTodoTitle}
-        placeholder="Enter todo title"
+        placeholder="Enter To Do title"
       />
       <TextInput
         style={styles.input}
         value={todoDescription}
         onChangeText={setTodoDescription}
-        placeholder="Enter todo description"
+        placeholder="Enter To Do description"
         multiline
         numberOfLines={4}
       />
-      <Button title={editTodoId ? 'Save Changes' : 'Add Todo'} onPress={addTodo} />
-      <Button title={isExpandedMode ? 'Switch to Concise Mode' : 'Switch to Expanded Mode'} onPress={() => setIsExpandedMode(!isExpandedMode)} />
+      <Button title={editTodoId ? 'Save Changes' : 'Add Todo'} onPress={addTodo} color='#E572BA' />
+      <View style={{ padding: 10 }} />
+      <Button title={isExpandedMode ? 'Switch to Concise Mode' : 'Switch to Expanded Mode'} onPress={() => setIsExpandedMode(!isExpandedMode)} color="#E572BA" />
       <FlatList
         data={todos}
         keyExtractor={(item) => item.id}
@@ -161,8 +159,9 @@ export default function AddTodoScreen(navigation) {
             {isExpandedMode && <Text>{item.description}</Text>}
             {isExpandedMode && (
               <View style={styles.controlPanel}>
-                <Button title="Delete" onPress={() => deleteTodo(item.id)} />
-                <Button title="Edit" onPress={() => editTodo(item.id)} />
+                <Button title="Delete" onPress={() => deleteTodo(item.id)} color='red' />
+                <Button title="Edit" onPress={() => editTodo(item.id)} color='#E572BA' />
+                <Button title="Finish" onPress={() => deleteTodo(item.id)} color= 'green' />
               </View>
             )}
           </View>
@@ -177,16 +176,16 @@ const styles = StyleSheet.create({
     padding: 30,
   },
   input: {
-    borderBottomColor: 'black',
+    borderBottomColor: 'pink',
     borderBottomWidth: 1,
     marginBottom: 15,
     padding: 8,
   },
   todoItem: {
     padding: 15,
-    marginTop: 10,
-    borderColor: 'black',
-    borderWidth: 1,
+    marginTop: 15,
+    borderColor: 'pink',
+    borderWidth: 5,
   },
   controlPanel: {
     flexDirection: 'row',

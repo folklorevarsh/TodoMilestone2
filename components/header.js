@@ -12,13 +12,13 @@ export default function Header() {
 
 const styles = StyleSheet.create({
   header: {
-    height: 85,
-    paddingTop: 15, // Adjust this value to shift the content vertically
+    height: 75,
+    paddingTop: 5, // Adjust this value to shift the content vertically
     backgroundColor: '#E572BA',
   },
   title: {
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: 'bold',
   }
 });
