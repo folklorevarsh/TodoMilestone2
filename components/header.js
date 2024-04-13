@@ -13,7 +13,7 @@ export default function Header() {
 const styles = StyleSheet.create({
   header: {
     height: 75,
-    paddingTop: 5, // Adjust this value to shift the content vertically
+    paddingTop: 5,
     backgroundColor: '#E572BA',
   },
   title: {
