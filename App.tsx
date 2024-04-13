@@ -6,11 +6,14 @@ import AddTodo from './components/addTodo';
 import AddTodoScreen from './screens/addTodoScreen'; */
 
 
+/*
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/home';
 import AddTodoScreen from './components/addTodoScreen'
+import { TodoProvider } from './components/TodoContext';
+
 
 const Stack = createStackNavigator();
 
@@ -20,6 +23,9 @@ export default function App() {
       { text: 'Finish Javascript Assignment', key: '2' },
       { text: 'Buy groceries on the way home', key: '3' },
     ]);
+
+
+  
 
 
 
@@ -35,4 +41,30 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
+
+export default App;
+*/
+
+
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/home';
+import AddTodoScreen from './components/addTodoScreen'
+import { TodoProvider } from './components/TodoContext';
+
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <TodoProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="AddTodo" component={AddTodoScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </TodoProvider>
+  );
+};

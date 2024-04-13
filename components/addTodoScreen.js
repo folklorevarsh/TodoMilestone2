@@ -86,23 +86,37 @@ const styles = StyleSheet.create({
       },
     }
   });
+
+
+  const [todos, setTodos] = useState([]);
 */
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, FlatList, StyleSheet } from 'react-native';
+import { Alert, View, Text, TextInput, Button, FlatList, StyleSheet, ToastAndroid } from 'react-native';
+import { TodoContext } from './components/TodoContext';
+
 
 export default function AddTodoScreen(navigation) {
   const [todoTitle, setTodoTitle] = useState('');
   const [todoDescription, setTodoDescription] = useState('');
   const [todos, setTodos] = useState([]);
+  
   const [editTodoId, setEditTodoId] = useState(null);
   const [isExpandedMode, setIsExpandedMode] = useState(true);
 
+
   const addTodo = () => {
+    if (todoTitle.trim() === '' || todoDescription.trim() === ''|| todoTitle.trim().length < 5 || todoDescription.trim().length < 5) {
+      // Don't add the todo if the title or description is empty
+      Alert.alert('Oops..', 'Your ToDo Title and Description must be over 5 characters long.', [
+        {text: 'Understood', onPress: () => console.log('alert closed')}
+      ]);
+      return;
+    }
     if (editTodoId) {
       setTodos((currentTodos) =>
         currentTodos.map((todo) =>
-          todo.id === editTodoId ? { id: todo.id, title: todoTitle, description: todoDescription } : todo
+          todo.id === editTodoId ? { id: todo.id, title: todoTitle, description: todoDescription } : todo, 
         )
       );
       setEditTodoId(null);
@@ -115,7 +129,7 @@ export default function AddTodoScreen(navigation) {
     setTodoTitle('');
     setTodoDescription('');
 
-    
+    Alert.alert('Success', 'To Do successfully added!');
   };
 
   const deleteTodo = (todoId) => {
@@ -147,21 +161,22 @@ export default function AddTodoScreen(navigation) {
         multiline
         numberOfLines={4}
       />
-      <Button title={editTodoId ? 'Save Changes' : 'Add Todo'} onPress={addTodo} color='#E572BA' />
-      <View style={{ padding: 10 }} />
-      <Button title={isExpandedMode ? 'Switch to Concise Mode' : 'Switch to Expanded Mode'} onPress={() => setIsExpandedMode(!isExpandedMode)} color="#E572BA" />
+      <Button title={editTodoId ? 'Save Changes' : 'Add Todo'} onPress={addTodo} color='#E996BA' />
+      <View style={{ padding: 10, flex: 1 }} />
+      <Button title={isExpandedMode ? 'Switch to Concise Mode ⬇' : 'Switch to Expanded Mode ⬆'} onPress={() => setIsExpandedMode(!isExpandedMode)} color="#E572BA" />
       <FlatList
         data={todos}
         keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={true}
         renderItem={({ item }) => (
           <View style={styles.todoItem}>
             <Text>{item.title}</Text>
             {isExpandedMode && <Text>{item.description}</Text>}
             {isExpandedMode && (
               <View style={styles.controlPanel}>
-                <Button title="Delete" onPress={() => deleteTodo(item.id)} color='red' />
-                <Button title="Edit" onPress={() => editTodo(item.id)} color='#E572BA' />
-                <Button title="Finish" onPress={() => deleteTodo(item.id)} color= 'green' />
+                <Button title="Delete ❌" onPress={() => deleteTodo(item.id)} color='#981400' />
+                <Button title="Edit ✏️" onPress={() => editTodo(item.id)} color='#E572BA' />
+                <Button title="Finish ✅" onPress={() => deleteTodo(item.id)} color= 'green' />
               </View>
             )}
           </View>
