@@ -57,13 +57,13 @@ export default function AddTodoScreen(navigation) {
         style={styles.input}
         value={todoTitle}
         onChangeText={setTodoTitle}
-        placeholder="Enter To Do title"
+        placeholder="Enter To do Task title"
       />
       <TextInput
         style={styles.input}
         value={todoDescription}
         onChangeText={setTodoDescription}
-        placeholder="Enter To Do description"
+        placeholder="Enter Task description"
         multiline
         numberOfLines={4}
       />
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomColor: 'pink',
-    borderBottomWidth: 1,
+    borderBottomWidth: 1.5,
     marginBottom: 15,
     padding: 8,
   },
