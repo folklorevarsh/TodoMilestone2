@@ -15,7 +15,7 @@ export default function AddTodoScreen(navigation) {
     if (todoTitle.trim() === '' || todoDescription.trim() === ''|| todoTitle.trim().length < 5 || todoDescription.trim().length < 5) {
       // Don't add the todo if the title or description is empty
       Alert.alert('Oops..', 'Your ToDo Title and Description must be over 5 characters long.', [
-        {text: 'Complete', onPress: () => console.log('alert closed')}
+        {text: 'Finish', onPress: () => console.log('alert closed')}
       ]);
       return;
     }
