@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard, Button } from 'react-native';
-import Header from '../components/header';
-import AddTodo from '../components/addTodo';
-import TodoItem from '../components/todoItem';
+import Header from './header';
+import AddTodo from './addTodo';
+import TodoItem from './todoItem';
 
 export default function HomeScreen({ navigation }) {
   const [todos, setTodos] = useState([
