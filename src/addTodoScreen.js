@@ -51,6 +51,14 @@ export default function AddTodoScreen(navigation) {
     }
   };
 
+
+  const finishTodo = (id) => {
+    setTodos(prevTodos => {
+      return prevTodos.filter(todo => todo.id !== id);
+    });
+    Alert.alert('Success', 'Task completed!');
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -82,7 +90,7 @@ export default function AddTodoScreen(navigation) {
               <View style={styles.controlPanel}>
                 <Button title="Delete ❌" onPress={() => deleteTodo(item.id)} color='#981400' />
                 <Button title="Edit ✏️" onPress={() => editTodo(item.id)} color='#E572BA' />
-                <Button title="Finish ✅" onPress={() => deleteTodo(item.id)} color= 'green' />
+                <Button title="Finish ✅" onPress={() => finishTodo(item.id)} color= 'green' />
               </View>
             )}
           </View>
